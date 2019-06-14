@@ -2,7 +2,7 @@ import requests
 import json
 import sys
 
-from github.github_client import GitHub
+from github.client import GitHub
 from urllib.parse import urljoin
 from requests.exceptions import HTTPError
 
@@ -99,6 +99,7 @@ def api_caller(GITHUB_API, auth_session):
         while True:
             try:
                 option = int(input('Option: '))
+                # Check if invalid option was selected
                 if option > 3 or option < 0:
                     raise ValueError
             except ValueError:

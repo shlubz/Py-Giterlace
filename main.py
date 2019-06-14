@@ -1,8 +1,8 @@
 import sys
 import os
 
-from github.github_client import GitHub
-from github.github_caller import api_caller
+from github.client import GitHub
+from github.caller import api_caller
 
 if __name__ == '__main__':
 
