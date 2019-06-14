@@ -6,6 +6,9 @@ PyGit-HubLab is a Python 3 application that encapsulates both GitHub's and GitLa
 [GitHub API v3]: https://developer.github.com/v3
 [GitLab API v4]: https://docs.gitlab.com/ee/api/README.html
 
+**IMPORTANT**
+GitLab features are currently being worked and!
+
 Using the application features allows you to manage both [GitHub] and [GitLab] resources, currently only supporting interaction with repositories.
 
 ## Installation
