@@ -31,12 +31,12 @@ Token: 'GITHUB_TOKEN' or 'GITLAB_TOKEN:
 
 ### Demo GitHub - WIP
 '''bash
-$ python3 __init__.py
+$ python3 main.py
 '''
 
 ### Demo GitLab - WIP
 '''bash
-$ python3 __init__.py
+$ python3 main.py
 '''
 
 ## Username/Password Method
