@@ -15,7 +15,7 @@ $ pip install PyGit-HubLab
 ```
 
 ## How To Use
-An account on either github or gitlab is required before interacting with a majority of APIs that are offered by GitHub and GitLab.
+An account on either GitHub or GitLab (depending on which is used) is required before interacting with a majority of APIs that are offered by GitHub and GitLab.
 
 Currently, PyGit-HubLab supports two methods of interacting with the APIs, one being token based and the other being username/password.
 
