@@ -15,11 +15,11 @@ $ pip install PyGit-HubLab
 ```
 
 ## How To Use
-An account on either github or gitlab is required before interacting with a majority of APIs that are offered by GitHub and GitLab.
+An account on either github or gitlab is required before interacting with a majority of APIs that are offered by GitHub and GitLab.\
 Currently, PyGit-HubLab supports two methods of interacting with the APIs, one being token based and the other being username/password.
 
 ## Pesonal Access Token Method
-Create a personal access token on either github or gitlab. Documentation can be found at the following links.
+Create a personal access token on either github or gitlab. Documentation can be found at the following links.\
 [GitHub]: https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line
 [GitLab]: https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html
 
@@ -37,8 +37,8 @@ $ python3 __init__.py
 '''
 
 ## Username/Password Method
-Again, preferably use with environmental variables with manual input supported:
-Username: 'GITHUB_USERNAME' or 'GITLAB_USERNAME' 
+Again, preferably use with environmental variables with manual input supported:\
+Username: 'GITHUB_USERNAME' or 'GITLAB_USERNAME'\ 
 Password: 'GITHUB_PASSWORD' or 'GITLAB_PASSWORD'
 
 ## Documentation - WIP
