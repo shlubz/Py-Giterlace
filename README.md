@@ -26,6 +26,7 @@ Create a personal access token on either github or gitlab. Documentation can be 
 [GitLab]: https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html
 
 Preferably use environmental variables to keep information input more secure but manual input is supported:
+
 Token: 'GITHUB_TOKEN' or 'GITLAB_TOKEN:
 
 ### Demo GitHub - WIP
