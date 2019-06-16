@@ -60,9 +60,9 @@ def response_loop(response_dicts, option):
 def api_caller(GITHUB_API, auth_session):
     """Little switcharoo that calls the class function based on user option input.
     """
-    def switch_exit():
-        print('Exiting program!')
-        sys.exit()
+    def return_to_main():
+        print('Returning to main menu!')
+        return
 
     def one():
         # Call create_repo class function
@@ -79,7 +79,7 @@ def api_caller(GITHUB_API, auth_session):
     def switcharoo(arg):
         # Returns function based on option argument
         switch_options = {
-            0: switch_exit,
+            0: return_to_main,
             1: one,
             2: two,
             3: three
@@ -91,7 +91,7 @@ def api_caller(GITHUB_API, auth_session):
     option = None
     while option != 0:
         print("Please type in the number of an option to interact with Github's API:\n\
-              0. Exit Program\n\
+              0. Return to Main menu\n\
               1. Create Repository\n\
               2. Delete Repository\n\
               3. List Repositories\n")

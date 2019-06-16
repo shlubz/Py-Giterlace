@@ -87,6 +87,7 @@ def start_github():
 
     # Start program with the api caller
     api_caller(GITHUB_API, auth_session)
+    return
 
 
 def start_gitlab():
@@ -96,23 +97,24 @@ def start_gitlab():
 if __name__ == '__main__':
     option = None
     while option != 0:
-        print("Hello and welcome to PyGit-HubLab!")
+        print("Hello and welcome to PyGit-Hub-or-Lab!")
         print("To get started, please select one of the following options to use GitHub or GitLab.\n\
+              0. Exit Program\n\
               1. GitHub\n\
               2. GitLab\n")
-        while True:
-            try:
-                option = int(input('Option: '))
-                # Check if invalid option was selected
-                if option > 2 or option < 0:
-                    raise ValueError
-            except ValueError:
-                print('Invalid selection in response, please  try again.')
-            else:
-                # Get response based on option selected
-                if option == 0:
-                    exit_program()
-                elif option == 1:
-                    start_github()
-                elif option == 2:
-                    start_gitlab()
+
+        try:
+            option = int(input('Option: '))
+            # Check if invalid option was selected
+            if option > 2 or option < 0:
+                raise ValueError
+        except ValueError:
+            print('Invalid selection in response, please  try again.')
+        else:
+            # Get response based on option selected
+            if option == 0:
+                exit_program()
+            elif option == 1:
+                start_github()
+            elif option == 2:
+                start_gitlab()
