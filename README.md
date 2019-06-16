@@ -1,7 +1,7 @@
-# PyGit-HubLab
+# PyGit-Hub-or-Lab
 Documentation is WIP (Work-In-Progress)
 
-PyGit-HubLab is a Python 3 application that encapsulates both GitHub's and GitLab's API functions into a single package.
+PyGit-Hub-or-Lab is a Python 3 application that encapsulates both GitHub's and GitLab's API functions into a single package.
 
 [GitHub API v3]: https://developer.github.com/v3
 [GitLab API v4]: https://docs.gitlab.com/ee/api/README.html
