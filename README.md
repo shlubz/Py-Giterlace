@@ -14,13 +14,13 @@ Using the application features allows you to manage both [GitHub] and [GitLab] r
 ## Installation
 
 ```bash
-$ pip install PyGit-HubLab
+$ pip install PyGit-Hub-or-Lab
 ```
 
 ## How To Use
 An account on either GitHub or GitLab (depending on which is used) is required before interacting with a majority of APIs that are offered by GitHub and GitLab.
 
-Currently, PyGit-HubLab supports two methods of interacting with the APIs, one being token based and the other being username/password.
+Currently, PyGit-Hub-or-Lab supports two methods of interacting with the APIs, one being token based and the other being username/password.
 
 ## Pesonal Access Token Method
 Create a personal access token on either github or gitlab. Documentation can be found at the following links.
