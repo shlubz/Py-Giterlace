@@ -7,7 +7,7 @@ PyGit-Hub-or-Lab is a Python 3 application that encapsulates both GitHub's and G
 [GitLab API v4]: https://docs.gitlab.com/ee/api/README.html
 
 **IMPORTANT**
-GitLab features are currently being worked and!
+GitLab features are currently being worked on.
 
 Using the application features allows you to manage both [GitHub] and [GitLab] resources, currently only supporting interaction with repositories.
 
