@@ -7,86 +7,99 @@ from github.caller import api_caller
 
 
 def exit_program():
+    """Simply exits the program."""
+
     print('Exiting program!')
     sys.exit()
 
 
 def start_github():
-    print('Starting GitHub client!')
+    """Starts the GitHub client with an authentication session depending on
+    user's choice with using a Password method or a Token-based method.
+    """
+
+    print('\nStarting GitHub client!\n')
     GITHUB_API = 'https://api.github.com'
 
-    def auth_session_call():
-        pass
+    def auth_session_call(USERNAME, **kwargs):
+        """Returns an authenticated session object based on given method.
 
+        Method 1: Username & Password
+        Method 2: Username & Token
+
+        Additionally, prints out the session info after method decision.
+        """
+
+        if 'PASSWORD' in kwargs:
+            PASSWORD = kwargs['PASSWORD']
+            auth_session = GitHub(USERNAME, PASSWORD=PASSWORD)
+        elif 'API_TOKEN' in kwargs:
+            API_TOKEN = kwargs['API_TOKEN']
+            auth_session = GitHub(USERNAME, API_TOKEN=API_TOKEN)
+
+        auth_session.print_session()
+        return auth_session
+
+    # Check or get username
     if os.environ.get('GITHUB_USERNAME') == '':
-        print('No environmental variable found for GITHUB_USERNAME')
+        print('No environmental variable found for GITHUB_USERNAME.\n')
         USERNAME = input('\nWhat is your github username? ')
     else:
         USERNAME = os.environ.get('GITHUB_USERNAME')
-        print(f'GITHUB_USERNAME found, username = {USERNAME}.')
-    while True:
-        try:
-            p_or_t = input('Please enter p for password or t for token: ')
-            print(p_or_t)
-            if p_or_t.lower() in ['p', 't', 'true', 'false']:
-                pass
-            else:
-                raise ValueError
-        except ValueError:
-            print('Invalid selection in response, please try again.')
+        print(f'GITHUB_USERNAME found, username = {USERNAME}\n.')
+
+    # Ask user for password or token method of authentication
+    try:
+        pass_or_tok = input('Please enter p for password or t for token: ')
+        print(pass_or_tok)
+        if pass_or_tok.lower() in ['p', 't', 'true', 'false']:
+            pass
         else:
-            # Check for password or token option
-            if p_or_t.lower() == 'p':
-                print('Checking if password environmental variables exists...')
-                if os.environ.get('GITHUB_PASSWORD') == '':
-                    print('No environmental variable found or GITHUB_PASSWORD')
-                    PASSWORD = getpass.getpass('Please enter your password: ')
-                    # Creates an authentication session object with given
-                    # username and password
-                    auth_session = GitHub(USERNAME, PASSWORD)
-                    auth_session.print_session()
-
-                    # Start program with the api caller
-                    api_caller(GITHUB_API, auth_session)
-                else:
-                    print('Environmental variable found!')
-                    PASSWORD = os.environ.get('GITHUB_PASSWORD')
-                    # Creates an authentication session object with given
-                    # username and password
-                    auth_session = GitHub(USERNAME, PASSWORD)
-                    auth_session.print_session()
-
-                    # Start program with the api caller
-                    api_caller(GITHUB_API, auth_session)
+            raise ValueError
+    except ValueError:
+        print('\nInvalid selection in response, please try again.')
+    else:
+        # Check for password or token option
+        if pass_or_tok.lower() == 'p':
+            print('Checking if password environmental variables exists...\n')
+            if os.environ.get('GITHUB_PASSWORD') == '':
+                print('No environmental variable found for GITHUB_PASSWORD.\n')
+                PASSWORD = getpass.getpass('Please enter your password: ')
             else:
-                print('Token it is, checking if token environmental\
-                      variable exists...')
-                if os.environ.get('GITHUB_TOKEN') == '':
-                    print('No environment variable found for GITHUB_TOKEN')
-                else:
-                    API_TOKEN = os.environ.get('GITHUB_TOKEN')
+                print('Environmental variable found!\n')
+                PASSWORD = os.environ.get('GITHUB_PASSWORD')
 
-                    # Creates an authentication session object with given
-                    # username and token
-                    auth_session = GitHub(USERNAME, API_TOKEN=API_TOKEN)
-                    auth_session.print_session()
+            # Will return the authenticated session to use in the api
+            # caller
+            auth_session = auth_session_call(GITHUB_API, PASSWORD=PASSWORD)
 
-                    # Start program with the api caller
-                    api_caller(GITHUB_API, auth_session)
+        else:
+            print('Token it is, checking if token environmental variable exists...')
+            if os.environ.get('GITHUB_TOKEN') == '':
+                print('No environment variable found for GITHUB_TOKEN.\n')
+                API_TOKEN = getpass.getpass('Please enter your token: ')
+            else:
+                print('Environmental variable found!\n')
+                API_TOKEN = os.environ.get('GITHUB_TOKEN')
+                # Creates an authentication session object with given
+                # username and token
+                auth_session = auth_session_call(USERNAME, API_TOKEN=API_TOKEN)
+
+    # Start program with the api caller
+    api_caller(GITHUB_API, auth_session)
 
 
 def start_gitlab():
-    print('Starting GitLab client!')
+    pass
 
 
 if __name__ == '__main__':
     option = None
     while option != 0:
         print("Hello and welcome to PyGit-HubLab!")
-        print('To get started, please select one of the following options to use\
-              GitHub or GitLab.\n\
+        print("To get started, please select one of the following options to use GitHub or GitLab.\n\
               1. GitHub\n\
-              2. GitLab\n')
+              2. GitLab\n")
         while True:
             try:
                 option = int(input('Option: '))
