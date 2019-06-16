@@ -9,17 +9,23 @@ class GitHub:
             GitHub Session Blueprint
     """
 
-    def __init__(self, username, api_token):
-        self.username = username
-        self.api_token = api_token
+    def __init__(self, USERNAME, **kwargs):
+        self.username = USERNAME
+        if 'PASSWORD' in kwargs:
+            self.api_token = ''
+            self.password = kwargs['PASSWORD']
+        elif 'API_TOKEN' in kwargs:
+            self.password = ''
+            self.api_token = kwargs['API_TOKEN']
         self.session = requests.Session()
-        self.session.headers['Authorization'] = f'token {api_token}'
+        self.session.headers['Authorization'] = f'token {self.api_token}'
 
     def print_session(self):
         """Create dict from object and return key, val in dict."""
 
         session_info = {
             "Username": self.username,
+            "Password":self.password,
             "Token":self.api_token,
             "Headers": self.session.headers
         }
