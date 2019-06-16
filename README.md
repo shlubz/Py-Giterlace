@@ -46,6 +46,7 @@ $ python3 main.py
 Again, preferably use with environmental variables with manual input supported:
 
 Username: 'GITHUB_USERNAME' or 'GITLAB_USERNAME'
+
 Password: 'GITHUB_PASSWORD' or 'GITLAB_PASSWORD'
 
 ## Documentation - WIP
