@@ -1,5 +1,6 @@
 # PyGitWeave
 Documentation is WIP (Work-In-Progress)
+[![License](https://img.shields.io/badge/license-LGPL-blue.svg)](https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License)
 
 PyGitWeave is a Python 3 application that supports and encapsulates any supported git repository hosting provider's APIs into a single package.
 
