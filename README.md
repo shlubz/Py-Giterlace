@@ -1,7 +1,9 @@
-# PyGit-Hub-or-Lab
+# PyGitWeave
 Documentation is WIP (Work-In-Progress)
 
-PyGit-Hub-or-Lab is a Python 3 application that encapsulates both GitHub's and GitLab's API functions into a single package.
+PyGitWeave is a Python 3 application that supports and encapsulates any supported git repository hosting provider's APIs into a single package.
+
+Currently supported or being worked on:
 
 [GitHub API v3]: https://developer.github.com/v3
 [GitLab API v4]: https://docs.gitlab.com/ee/api/README.html
@@ -9,18 +11,18 @@ PyGit-Hub-or-Lab is a Python 3 application that encapsulates both GitHub's and G
 **IMPORTANT**
 GitLab features are currently being worked on.
 
-Using the application features allows you to manage both [GitHub] and [GitLab] resources, currently only supporting interaction with repositories.
+Using the application features allows you to currently manage both [GitHub] and [GitLab] resources, currently only supporting interaction with repositories.
 
 ## Installation
 
 ```bash
-$ pip install PyGit-Hub-or-Lab
+$ pip install PyGitWeave
 ```
 
 ## How To Use
 An account on either GitHub or GitLab (depending on which is used) is required before interacting with a majority of APIs that are offered by GitHub and GitLab.
 
-Currently, PyGit-Hub-or-Lab supports two methods of interacting with the APIs, one being token based and the other being username/password.
+Currently, PyGitWeave supports two methods of interacting with the APIs, one being token based and the other being username/password.
 
 ## Pesonal Access Token Method
 Create a personal access token on either github or gitlab. Documentation can be found at the following links.

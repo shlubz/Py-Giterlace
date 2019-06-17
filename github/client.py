@@ -10,6 +10,7 @@ class GitHub:
     """
 
     def __init__(self, USERNAME, **kwargs):
+        self.session = requests.Session()
         self.username = USERNAME
         if 'PASSWORD' in kwargs:
             self.api_token = ''
@@ -17,8 +18,7 @@ class GitHub:
         elif 'API_TOKEN' in kwargs:
             self.password = ''
             self.api_token = kwargs['API_TOKEN']
-        self.session = requests.Session()
-        self.session.headers['Authorization'] = f'token {self.api_token}'
+            self.session.headers['Authorization'] = f'token {self.api_token}'
 
     def print_session(self):
         """Create dict from object and return key, val in dict."""
