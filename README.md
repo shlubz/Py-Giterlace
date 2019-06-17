@@ -22,8 +22,8 @@ $ pip install PyGitWeave
 ## How To Use
 An account on either GitHub or GitLab (depending on which is used) is required before interacting with a majority of APIs that are offered by GitHub and GitLab.
 
-Currently, PyGitWeave supports two methods of interacting with the APIs, one being token based and the other being username/password.
-
+Currently, PyGitWeave supports token and username/password based authentication on GitHub and GitLab only supported for token-based.
+1
 ## Pesonal Access Token Method
 Create a personal access token on either github or gitlab. Documentation can be found at the following links.
 
@@ -49,7 +49,7 @@ Again, preferably use with environmental variables with manual input supported:
 
 Username: 'GITHUB_USERNAME' or 'GITLAB_USERNAME'
 
-Password: 'GITHUB_PASSWORD' or 'GITLAB_PASSWORD'
+Password: 'GITHUB_PASSWORD'
 
 ## Documentation - WIP
 

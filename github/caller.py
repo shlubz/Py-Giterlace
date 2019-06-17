@@ -58,8 +58,10 @@ def response_loop(response_dicts, option):
 
 
 def api_caller(GITHUB_API, auth_session):
-    """Little switcharoo that calls the class function based on user option input.
+    """Calls the class function based on user option input passed through a
+    switch.
     """
+
     def return_to_main():
         print('Returning to main menu!')
         return
@@ -76,7 +78,7 @@ def api_caller(GITHUB_API, auth_session):
         # Call list_repo class function
         return auth_session.list_repos(urljoin(GITHUB_API, 'user/repos'))
 
-    def switcharoo(arg):
+    def function_switcher(option):
         # Returns function based on option argument
         switch_options = {
             0: return_to_main,
@@ -84,14 +86,14 @@ def api_caller(GITHUB_API, auth_session):
             2: two,
             3: three
         }
-        func = switch_options.get(arg)
+        func = switch_options.get(option)
         return func()
 
     # Input options for user, if option eq 0 then exit loop
     option = None
     while option != 0:
-        print("Please type in the number of an option to interact with Github's API:\n\
-              0. Return to Main menu\n\
+        print("Please type in the number of an option to interact with GitHub's API:\n\
+              0. Return to main menu\n\
               1. Create Repository\n\
               2. Delete Repository\n\
               3. List Repositories\n")
@@ -99,7 +101,7 @@ def api_caller(GITHUB_API, auth_session):
         while True:
             try:
                 option = int(input('Option: '))
-                # Check if invalid option was selected
+                # Check if invalid option was used
                 if option > 3 or option < 0:
                     raise ValueError
             except ValueError:
@@ -108,10 +110,10 @@ def api_caller(GITHUB_API, auth_session):
                 try:
                     # Get response based on option selected
                     if option == 0 or option == 2:
-                        switcharoo(option)
+                        function_switcher(option)
                         break
                     else:
-                        response, url = switcharoo(option)
+                        response, url = function_switcher(option)
 
                         # If response was successful, No Exception is raised
                         response.raise_for_status()
