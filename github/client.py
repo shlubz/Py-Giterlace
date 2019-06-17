@@ -25,7 +25,6 @@ class GitHub:
         """Create dict from object and return key, val in dict."""
 
         session_info = {
-            "Username": self.username,
             "Headers": self.session.headers
         }
         for key, val in session_info.items():
