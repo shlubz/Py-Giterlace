@@ -46,12 +46,11 @@ def start_github():
         USERNAME = input('\nWhat is your github username? ')
     else:
         USERNAME = os.environ.get('GITHUB_USERNAME')
-        print(f'GITHUB_USERNAME found, username = {USERNAME}\n.')
+        print(f'GITHUB_USERNAME found, username = {USERNAME}.\n')
 
     # Ask user for password or token method of authentication
     try:
         pass_or_tok = input('Please enter p for password or t for token: ')
-        print(pass_or_tok)
         if pass_or_tok.lower() in ['p', 't', 'true', 'false']:
             pass
         else:
@@ -61,17 +60,17 @@ def start_github():
     else:
         # Check for password or token option
         if pass_or_tok.lower() == 'p':
-            print('Checking if password environmental variables exists...\n')
+            print('\nChecking if password environmental variables exists...')
             if os.environ.get('GITHUB_PASSWORD') == '':
                 print('No environmental variable found for GITHUB_PASSWORD.\n')
                 PASSWORD = getpass.getpass('Please enter your password: ')
             else:
-                print('Environmental variable found!\n')
+                print('\nEnvironmental variable found!\n')
                 PASSWORD = os.environ.get('GITHUB_PASSWORD')
 
             # Will return the authenticated session to use in the api
             # caller
-            auth_session = auth_session_call(GITHUB_API, PASSWORD=PASSWORD)
+            auth_session = auth_session_call(USERNAME, PASSWORD=PASSWORD)
 
         else:
             print('Token it is, checking if token environmental variable exists...')

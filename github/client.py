@@ -15,6 +15,7 @@ class GitHub:
         if 'PASSWORD' in kwargs:
             self.api_token = ''
             self.password = kwargs['PASSWORD']
+            self.session.auth = (self.username, self.password)
         elif 'API_TOKEN' in kwargs:
             self.password = ''
             self.api_token = kwargs['API_TOKEN']
@@ -25,8 +26,6 @@ class GitHub:
 
         session_info = {
             "Username": self.username,
-            "Password":self.password,
-            "Token":self.api_token,
             "Headers": self.session.headers
         }
         for key, val in session_info.items():
@@ -91,14 +90,13 @@ class GitHub:
         else:
             # Loop through repo_list, strip whitespace and build url
             for name in repo_list:
-                name.strip()
-                url = url + '/' + self.username + '/' + name
-                print(f'\nURL: {url}')
+                new_url = url + '/' + self.username + '/' + name.strip()
+                print(f'\nURL: {new_url}')
 
                 # Check if repository exists by receiving status code == 404
                 try:
                     print(f'Checking if repository {name} exists...\n')
-                    response = self.session.get(url)
+                    response = self.session.get(new_url)
                     response.raise_for_status()
                 except HTTPError as err:
                     print(err)
@@ -106,7 +104,7 @@ class GitHub:
                         print(f'Repository {name} doesn\'t exist, skipping!')
                 else:
                     print(f'\nDeleting repository, {name}...')
-                    self.session.delete(url)
+                    self.session.delete(new_url)
                     deleted_repo += 1
         finally:
             if deleted_repo > 0:
