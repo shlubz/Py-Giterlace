@@ -19,7 +19,7 @@ def main():
 
     option = None
     while option != 0:
-        print("Hello and welcome to PyGit-Hub-or-Lab!")
+        print("Hello and welcome to PyGitWeave!")
         print("To get started, please select one of the following options to use GitHub or GitLab.\n\
               0. Exit Program\n\
               1. GitHub\n\

@@ -4,7 +4,7 @@ import json
 from urllib.parse import urljoin
 from requests.exceptions import HTTPError
 
-class GitHub:
+class GitHub(object):
     """
             GitHub Session Blueprint
     """

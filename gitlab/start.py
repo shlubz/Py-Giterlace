@@ -33,7 +33,7 @@ def start_gitlab():
         USERNAME = input('\nPlease enter your GitLab username: ')
     else:
         USERNAME = os.environ.get('GITLAB_USERNAME')
-        print(f'GITLAB_USERNAME foudn, username = {USERNAME}.\n')
+        print(f'GITLAB_USERNAME found, username = {USERNAME}.\n')
 
     # Check or get api_token
     print('Checking if token environmental variable exists...')
