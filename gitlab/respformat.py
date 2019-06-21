@@ -48,11 +48,13 @@ def response_loop(response_dicts, option):
         partciular group.
         """
         for key1, val1 in response_dicts.items():
-            if isinstance(val1, dict):
-                for key2, val2 in val1.items():
-                    print(f'{key2}: {val2}')
-            else:
-                print(f'{key1}: {val1}')
+            if key1 == 'projects':
+                for item in val1:
+                    if isinstance(item, dict):
+                        for key2, val2 in item.items():
+                            if key2 == 'name':
+                                print(f'{key2}: {val2}')
+
         print()
 
     # Option determines which loop function to call
