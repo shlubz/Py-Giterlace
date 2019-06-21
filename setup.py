@@ -23,6 +23,15 @@ def exit_program():
     sys.exit()
 
 
+def banner():
+    """Just prints the banner for the program."""
+
+    print()
+    print('===================================================================')
+    print('||                        PY-GITERLACE                           ||')
+    print('===================================================================')
+
+
 def prog_desc():
     """Just prints the program description of how it's intended to be used."""
 
@@ -40,14 +49,6 @@ def prog_desc():
            to eventually work with other git hosting platforms as well."""
     print(text_wrap(text))
 
-
-def banner():
-    """Just prints the banner for the program."""
-
-    print()
-    print('===================================================================')
-    print('||                        PY-GITERLACE                           ||')
-    print('===================================================================')
 
 
 def main():
