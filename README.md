@@ -43,12 +43,14 @@ using environmental variable calling os.environ.get('variable_name') from within
 Add video
 
 
-### Environemental Variables
+### Environmental Variables
 If the configuration file isn't used, the application will search the local environmental variables set as the user.
 The default names can be changed but it is recommended not to unless going through all the code to replace the searching strings.
 
 Username: 'github_username' or 'gitlab_username'
-Token:    'github_token' or 'gitlab_token
+
+Token:    'github_token' or 'gitlab_token'
+
 Password: 'github_password' or 'gitlab_password'
 
 ## Manual Input
