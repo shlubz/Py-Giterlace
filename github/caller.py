@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""Py-Giterlace/github/start.py
+
+This module is used to call desired API endpoints that GitHub offers.
+"""
+
 import requests
 import json
 import sys

@@ -1,3 +1,27 @@
+# -*- coding: utf-8 -*-
+"""Py-Giterlace/github/client.py
+
+This module is used to build an authenticated session to GitHub using method of
+authentication by the user.
+
+An object is instantiated from the caller.py module with the constructor.
+
+Current functions:
+    print_session()  - Takes no arugments and outputs infomation from the session
+                       headers.
+
+    create_repo(url) - Takes a url for argument and returns the POST request to
+                       the url and the url to be used in variables.
+
+    delete_repo(url) - Takes a url for argument and returns POST request(s) to
+                       delete the repository request, can also delete multiple
+                       repositories using a comma ',' between each of the repo
+                       names.  It also returns the url to be used in variables.
+
+    list_repo(url)   - Takes a url for argument and returns the GET request to the
+                       url and the url to be used in variables.
+"""
+
 import requests
 import json
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""PyGiterlace/github/start.py
+"""Py-Giterlace/setup.py
 
 This module is the entrypoint in the program.
 
