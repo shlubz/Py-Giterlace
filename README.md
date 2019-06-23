@@ -14,8 +14,14 @@ Currently supported or being worked on:
 [GitHub API v3]: https://developer.github.com/v3
 [GitLab API v4]: https://docs.gitlab.com/ee/api/README.html
 
+[GitHub API v3]
+[GitLab API v4]
+
 **IMPORTANT**
 GitLab features are currently being worked on. Some of the features may not work right or way or haven't been fully bug scrubbed.
+
+[GitHub]: https://github.com/about
+[GitLab]: https://about.gitlab.com/
 
 Using the application features allows you to currently manage both [GitHub] and [GitLab] resources, currently only supporting interaction with repositories
 such as listing, creating or deleting respositories.
@@ -32,8 +38,11 @@ Currently, Py-Giterlace supports token and username/password based authenticatio
 ## Pesonal Access Token
 Create a personal access token on either github or gitlab. Documentation can be found at the following links.
 
-[GitHub]: https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line
-[GitLab]: https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html
+[GitHub Personal Access Token]: https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line
+[GitLab Personal Access Token]: https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html
+
+[GitHub Personal Access Token]
+[GitLab Personal Access Token]
 
 Py-Giterlace supports three methods of inputting authentication information and will try to automate a majority of the process.
 
