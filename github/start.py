@@ -78,7 +78,9 @@ def config_file_use():
 
         # Set configuration values
         use_config = False
-        username = password = api_token = ''
+        username = ''
+        password = ''
+        api_token = ''
     else:
         print('\nFound config file with values set.')
         use_config = True
@@ -112,7 +114,9 @@ def session_builder(use_config, **kwargs):
         text = """\n\
                No data found in environmental or user input found for """
 
-        raise_pass1 = raise_pass2 = raise_pass3 = False
+        raise_pass1 = False
+        raise_pass2 = False
+        raise_pass3 = False
         raise_all_pass = [raise_pass1, raise_pass2, raise_pass3]
 
         username = os.environ.get(env_vars[0])
@@ -172,19 +176,21 @@ def start_github():
     github_api = 'https://api.github.com'
     raise_pass = False
     passing_vals = ['t', 'true', 'f', 'false']
+    username = ''
+    password = ''
+    api_token = ''
 
     # Check for proper input on using the config file
     while not raise_pass:
         use_config = input('Please enter true or false if the configuration file is used: ')
         raise_pass = raise_value(use_config.lower(), passing_vals)
 
-    # Check if input was true or false for using the config file
-    if use_config.lower() in passing_vals[0 or 1]:
-        use_config, username, password, api_token = config_file_use()
+        # Check if input was true or false for using the config file
+        if use_config.lower() in passing_vals[0:2]:
+            use_config, username, password, api_token = config_file_use()
 
-    elif use_config.lower() in passing_vals[2 or 3]:
-        use_config = False
-        username = password = api_token = ''
+        elif use_config.lower() in passing_vals[2:4]:
+            use_config = False
 
     # Returns the authenticated session using password_or_token method
     auth_session = session_builder(use_config,

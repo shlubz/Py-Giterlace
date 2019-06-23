@@ -27,6 +27,8 @@ import json
 
 from urllib.parse import urljoin
 from requests.exceptions import HTTPError
+from global_tools.tools import text_wrap
+
 
 class GitHub(object):
     """
@@ -95,10 +97,13 @@ class GitHub(object):
 
         deleted_repo = 0
 
-        print('Please enter the name of the repository to delete.')
-        print('If no directory is entered, you will be redirected back to the choices prompt')
-        print('For multiple repositories, use a command in between each name.')
-        print('Example: repo1,repo2 OR repo1, repo2')
+        text = """\n\
+               Please enter the name of the repository to delete.
+               If no directory is entered, you will be redirected back to the
+               choices prompt.  For multiple repositories, use a comma between
+               each name.
+               \nExample: repo1,repo2 OR repo1, repo2\n"""
+        print(text_wrap(text))
 
         # Build a list of repositories from user input
         try:
