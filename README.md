@@ -15,6 +15,7 @@ Currently supported or being worked on:
 [GitLab API v4]: https://docs.gitlab.com/ee/api/README.html
 
 [GitHub API v3]
+
 [GitLab API v4]
 
 **IMPORTANT**
@@ -42,6 +43,7 @@ Create a personal access token on either github or gitlab. Documentation can be 
 [GitLab Personal Access Token]: https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html
 
 [GitHub Personal Access Token]
+
 [GitLab Personal Access Token]
 
 Py-Giterlace supports three methods of inputting authentication information and will try to automate a majority of the process.
