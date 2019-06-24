@@ -22,15 +22,14 @@ Current functions:
                        url and the url to be used in variables.
 """
 
-import requests
 import json
+import requests
 
-from urllib.parse import urljoin
 from requests.exceptions import HTTPError
 from global_tools.tools import text_wrap
 
 
-class GitHub(object):
+class GitHub():
     """
             GitHub Session Blueprint
     """
@@ -94,8 +93,8 @@ class GitHub(object):
 
     def delete_repo(self, url):
         """Deletes repository given the repository name."""
-
-        deleted_repo = 0
+        counter = 0
+        deleted_repos = 0
 
         text = """\n\
                Please enter the name of the repository to delete.
@@ -110,16 +109,14 @@ class GitHub(object):
             repo_list = list(map(str, input("Input: ").split(',')))
 
             for name in repo_list:
-                counter = 0
 
                 if name == '':
                     raise ValueError
 
-                else:
-                    counter += 1
+                counter += 1
 
         except ValueError:
-            print(f'No repository entered at index: {counter}, redirecting to choices prompt.')
+            print(f'No repository entered at index: {counter}.')
 
         else:
             # Loop through repo_list, strip whitespace and build url
@@ -127,7 +124,9 @@ class GitHub(object):
                 new_url = url + '/' + self.username + '/' + name.strip()
                 print(f'\nURL: {new_url}')
 
-                # Check if repository exists by receiving status code == 404
+                # Check if repository exists by receiving status codes
+                # 200 for OK
+                # 404 for Not Found
                 try:
                     print(f'Checking if repository {name} exists...\n')
                     response = self.session.get(new_url)
@@ -135,22 +134,24 @@ class GitHub(object):
 
                 except HTTPError as err:
                     print(err)
+
                     if response.status_code == 404:
                         print(f'Repository {name} doesn\'t exist, skipping!')
 
-                    else:
-                        print(f'\nDeleting repository, {name}...')
-                        self.session.delete(new_url)
-                        deleted_repo += 1
+                else:
+                    print(f'Deleting repository, {name}...')
+                    self.session.delete(new_url)
+                    deleted_repos += 1
+
         finally:
             # Output depending on if any repositories were deleted
-            if deleted_repo > 0:
-                print('\nSuccessfully deleted all repositories!')
-
+            if deleted_repos > 2:
+                print('\nSuccessfully deleted all the repositories!\n')
+            elif deleted_repos > 1:
+                print('\nSuccessfully deleted the repository!\n')
             else:
-                print('\nNo repositories were deleted, returning to prompt.')
+                print('\nNo repositories were deleted, returning to prompt.\n')
 
-        return
 
     def list_repos(self, url):
         """Lists all repositories for a user's GitHub account."""

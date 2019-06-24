@@ -78,15 +78,13 @@ def config_file_use():
 
         # Set configuration values
         use_config = False
-        username = ''
-        password = ''
-        api_token = ''
+        username = password = api_token = ''
     else:
         print('\nFound config file with values set.')
         use_config = True
-        username = cfg.github_client['username']
-        password = cfg.github_client['password']
-        api_token = cfg.github_client['api_token']
+        username, password, api_token = (cfg.github_client[conf_list[0]],
+                                         cfg.github_client[conf_list[1]],
+                                         cfg.github_client[conf_list[2]])
 
     return use_config, username, password, api_token
 
@@ -99,29 +97,29 @@ def session_builder(use_config, **kwargs):
 
     # If configuration is True, use that data for authenticated session
     if use_config:
-        username = kwargs['username']
-        password = kwargs['password']
-        api_token = kwargs['api_token']
+        username, password, api_token = (kwargs['username'],
+                                         kwargs['password'],
+                                         kwargs['api_token'])
 
         if password == '':
             auth_session = auth_session_call(username, api_token=api_token)
 
         auth_session = auth_session_call(username, password=password)
 
+    # Run through pass to check if username and password or api_token are
+    # used, all passes must be True to break outter loop
     if not use_config:
         empty_string = ''
         env_vars = ['github_username', 'github_password', 'github_token']
         text = """\n\
                No data found in environmental or user input found for """
 
-        raise_pass1 = False
-        raise_pass2 = False
-        raise_pass3 = False
-        raise_all_pass = [raise_pass1, raise_pass2, raise_pass3]
+        raise_pass1 = raise_pass2 = raise_pass3 = False
+        raise_all_pass = [raise_pass1, raise_pass2, raise_pass3] # All False
 
-        username = os.environ.get(env_vars[0])
-        password = os.environ.get(env_vars[1])
-        api_token = os.environ.get(env_vars[2])
+        username, password, api_token = (os.environ.get(env_vars[0]),
+                                         os.environ.get(env_vars[1]),
+                                         os.environ.get(env_vars[2]))
 
         # Stop loop after all raise_passes are True
         while not all(raise_all_pass):
@@ -176,19 +174,18 @@ def start_github():
     github_api = 'https://api.github.com'
     raise_pass = False
     passing_vals = ['t', 'true', 'f', 'false']
-    username = ''
-    password = ''
-    api_token = ''
+    username = password = api_token = ''
 
     # Check for proper input on using the config file
     while not raise_pass:
         use_config = input('Please enter true or false if the configuration file is used: ')
         raise_pass = raise_value(use_config.lower(), passing_vals)
 
-        # Check if input was true or false for using the config file
+        # If input was true call function to use configuratino file
         if use_config.lower() in passing_vals[0:2]:
             use_config, username, password, api_token = config_file_use()
 
+        # If input was false set to False
         elif use_config.lower() in passing_vals[2:4]:
             use_config = False
 

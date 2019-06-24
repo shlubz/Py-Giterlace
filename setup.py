@@ -70,7 +70,7 @@ def main():
             option = int(input('Option: '))
 
             # Check if invalid option was selected
-            if option not in range(0, 2):
+            if option not in range(0, 3):
                 raise ValueError
 
         except ValueError:

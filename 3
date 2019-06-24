@@ -105,14 +105,11 @@ def api_caller(GITHUB_API, auth_session):
         while True:
             try:
                 option = int(input('Option: '))
-                print()
                 # Check if invalid option was used
                 if option > 3 or option < 0:
                     raise ValueError
-
             except ValueError:
-                print('\nInvalid selection in response, please try again.\n')
-
+                print('Invalid selection in response, please try again.')
             else:
                 try:
                     # Get response based on option selected
@@ -136,5 +133,4 @@ def api_caller(GITHUB_API, auth_session):
                     print('Connection successful!')
                     # Send response in JSON format to output loop
                     response_loop(response.json(), option)
-
                 break
